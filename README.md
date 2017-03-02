@@ -1,4 +1,7 @@
 # PowerShell Sitecore Role Configurator
+by Zachary Kniebel
+
+### Overview 
 
 PowerShell scripts for configuring a Sitecore 8+ instance for a particular role (e.g. CM, CD, Processing, Reporting, etc.), with the 
 desired search provider(s). 
@@ -11,5 +14,5 @@ the command prompt or PowerShell shell.
 
 ### Credit
 
-The configuration script uses Micheel West's original script as a foundation, and has been significantly modified from that version to 
-support greater reusability and additional options. Michael West's script may be found here: https://gist.github.com/michaellwest/d1124a459cb1fb47486f87d488ecfab8#file-sitecoreroleconfigurator-ps1
+The configuration script was written by Zachary Kniebel, using Michael West's original script as a foundation. Michael West's original
+script may be found here: https://gist.github.com/michaellwest/d1124a459cb1fb47486f87d488ecfab8#file-sitecoreroleconfigurator-ps1
