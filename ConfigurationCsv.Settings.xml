@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!-- PARAMETERS 
+       Defines settings to be used by the role configurator script and the
+       included testing tool -->
+<Parameters>
+    <!-- CSV FILE Path
+           Path to the .CSV file converted from Sitecore's Excel file that 
+           should be used for configuring the base Sitecore instance
+           Note: the original Excel file downloaded from Sitecore should 
+                 be converted to CSV and any extranous rows or content 
+                 that does not belong to the table data should be removed
+                 (e.g. introductory titles or content, blank rows above 
+                 table, etc.) -->
+    <CsvFilePath>Config_Enable-Disable_Sitecore_8.1_upd3.csv</CsvFilePath>
+    <!-- ROLE COLUMN HEADERS
+           Defines the names of each column in the CSV that represents
+           the settings for a role -->
+    <RoleColumnHeaders>
+        <RoleColumnHeader>Content Delivery (CD)</RoleColumnHeader>
+        <RoleColumnHeader>Content Management (CM)</RoleColumnHeader>
+        <RoleColumnHeader>Processing</RoleColumnHeader>
+        <RoleColumnHeader>CM + Processing</RoleColumnHeader>
+        <RoleColumnHeader>Reporting</RoleColumnHeader>
+    </RoleColumnHeaders>
+    <!-- FILE NAME COLUMN HEADER
+           The name of the column in the CSV that contains the config 
+           file name -->
+    <FileNameColumnHeader>Config file name</FileNameColumnHeader>
+    <!-- FILE PATH COLUMN HEADER
+           The name of the column in the CSV that contains the config 
+           file's directory path -->
+    <FilePathColumnHeader>File path</FilePathColumnHeader>
+    <!-- DEFAULT EXTENSION COLUMN HEADER
+           The name of the column in the CSV that contains the config
+           file's default extension (config, disabled, example) -->
+    <DefaultExtensionColumnHeader>Config type</DefaultExtensionColumnHeader>
+    <!-- SEARCH PROVIDER COLUMN HEADER
+           The name of the column in the CSV that contains the search
+           provider that the config file should be included for -->
+    <SearchProviderColumnHeader>Search Provider Used</SearchProviderColumnHeader>
+</Parameters>
