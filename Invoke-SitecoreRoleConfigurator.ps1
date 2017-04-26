@@ -122,7 +122,7 @@ function Invoke-SitecoreRoleConfigurator {
             # get the full path to the config file's parent directory
             $configPath = Join-Path -Path $ApplicationFolderPath -ChildPath $csvTableRow.$FilePathColumn.Trim()
             $fileName = $csvTableRow.$FileNameColumn.Trim()
-            $defaultExtension = ".$($csvTableRow.$DefaultExtensionColumn)".Trim()
+            $defaultExtension = [System.IO.Path]::GetExtension($fileName)
 
             # enable, disable or skip based on the given role
             switch($csvTableRow.$RoleColumn.Trim()) {
@@ -138,11 +138,8 @@ function Invoke-SitecoreRoleConfigurator {
                         }
                         Write-Host "`tSkipping file '$fileName'. File is for an excluded search provider."
                     } else {
-                        # there is an issue with the CSV - we could probably work around it, but better to have someone look at it
-                        if (!$fileName.EndsWith($defaultExtension)) {
-                            throw [System.Exception] "File '$fileName' does not have the expected extension '$defaultExtension'."
                         # file must have default extension - if it's not yet enabled then enable it
-                        } elseif ($defaultExtension -ne ".config") {
+                        if ($defaultExtension -ne ".config") {
                             Write-Host "`tRenaming $fileName to enable it"
                             Rename-EnableConfigFile -ExistingName $fileName -DefaultExtension $defaultExtension -ContainerPath $configPath
                         } else {
@@ -153,11 +150,8 @@ function Invoke-SitecoreRoleConfigurator {
                 "Disable" {
                     Write-Host "Disable: $fileName"
 
-                    # there is an issue with the CSV - we could probably work around it, but better to have someone look at it
-                    if (!$fileName.EndsWith($defaultExtension)) {
-                        throw [System.Exception] "File '$fileName' does not have the expected extension '$defaultExtension'."
                     # if the file is enabled then disable it (we don't care about 'example' files, since they're already disabled)
-                    } elseif ($defaultExtension -eq ".config") {
+                    if ($defaultExtension -eq ".config") {
                         Write-Host "`tRenaming $fileName to disable it"
                         # disable the file
                         Rename-DisableConfigFile -ExistingName $fileName -ContainerPath $configPath
